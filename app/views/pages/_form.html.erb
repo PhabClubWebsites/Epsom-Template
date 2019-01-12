@@ -113,9 +113,20 @@
   .btn-phab {
     min-width: auto !important;
   }
+  
+  .banner-img-row {
+    display: flex;
+    align-items: center;
+  }
+  
   @media only screen and (max-width: 991px) {
     .mt-1 {
       margin-top: 10px;
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    .banner-img-row {
+      margin-top: 20px;
     }
   }
 </style>
@@ -192,7 +203,7 @@
             <% end %>
             <%= f.file_field :img_one %>
           </div>
-          <div class="col-md-6 col-sm-6 col-xs-6" style="display: flex; align-items: center;">
+          <div class="col-md-6 col-sm-6 col-xs-12 banner-img-row">
             <a href="#" data-toggle="tooltip" data-placement="top"  title="Use Banner for landscape images, Square for portrait and Inline to make the text wrap around the image" style="padding: 10px;"><i class="fa fa-info"></i></a>
             <%= select_tag "page[img_one_format]", options_for_select([["Banner Separator", "banner"], ["Square Separator", "square-sep"], ["Inline Square", "in-square"]], f.object.img_one_format), class: "form-control" %>
           </div>
@@ -230,7 +241,7 @@
             <% end %>
             <%= f.file_field :img_two %>
           </div>
-          <div class="col-md-6 col-sm-6 col-xs-6" style="display: flex; align-items: center;">
+          <div class="col-md-6 col-sm-6 col-xs-12 banner-img-row">
             <a href="#" data-toggle="tooltip" data-placement="top"  title="Use Banner for landscape images, Square for portrait and Inline to make the text wrap around the image" style="padding: 10px;"><i class="fa fa-info"></i></a>
             <%= select_tag "page[img_two_format]", options_for_select([["Banner Separator", "banner"], ["Square Separator", "square-sep"], ["Inline Square", "in-square"]], f.object.img_two_format), class: "form-control" %>
           </div>
@@ -268,7 +279,7 @@
             <% end %>
             <%= f.file_field :img_three %>
           </div>
-          <div class="col-md-6 col-sm-6 col-xs-6" style="display: flex; align-items: center;">
+          <div class="col-md-6 col-sm-6 col-xs-12 banner-img-row">
             <a href="#" data-toggle="tooltip" data-placement="top"  title="Use Banner for landscape images, Square for portrait and Inline to make the text wrap around the image" style="padding: 10px;"><i class="fa fa-info"></i></a>
             <%= select_tag "page[img_three_format]", options_for_select([["Banner Separator", "banner"], ["Square Separator", "square-sep"], ["Inline Square", "in-square"]], f.object.img_three_format), class: "form-control" %>
           </div>

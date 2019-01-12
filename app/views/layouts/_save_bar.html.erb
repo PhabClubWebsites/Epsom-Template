@@ -1,0 +1,26 @@
+<style>
+    .savebar {
+        position: fixed;
+        left: 250px;
+        right: 0;
+        bottom: -60px;
+        z-index: 35;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 12px 24px;
+        border-top: 2px solid rgba(86, 166, 68, 0.2);
+        background-color: white;
+        transition: all .3s;
+    }
+    
+    @media only screen and (max-width: 991px) {
+      .savebar {
+        left: 0;
+      }
+    }
+</style>
+<div class="savebar" id="save_bar">
+    <button class="btn btn-md btn-phab" style="margin-top: 0 !important; min-width: 120px !important;" id="fake_submit_btn">Save</button>
+</div>

@@ -24,6 +24,9 @@
     .btn-danger {
       color: white !important;
     }
+    trix-toolbar .trix-button-row {
+      flex-wrap: wrap !important;
+    }
   </style>
   <%= render 'layouts/admin_navigation' %>  
   <body class="admin">
@@ -37,13 +40,26 @@
     </div>
     <div class="admin-body">
         <%= yield %>    
+        <% unless params[:controller] === "pictures" || params[:controller] === "galleries" %>
+          <%= render "layouts/save_bar" %>
+        <% end %>
     </div>
     
   </body>
 </html>
 <script>
   $(document).on("turbolinks:load", function() {
+    $("#save_bar").css("bottom", "-60px");
     $('[data-toggle="tooltip"]').tooltip(); 
     $('.alert').delay(5000).fadeOut(2000);
+    $("#fake_submit_btn").html($("input[type='submit']").val())
+    
+    $("body").on("click", "#fake_submit_btn", function() {
+      $("input[type='submit']").click();
+    })
+    
+    $("body").on("click change", "input, textarea, trix-editor", function() {
+      $("#save_bar").css("bottom", 0);
+    });
   });
 </script>
