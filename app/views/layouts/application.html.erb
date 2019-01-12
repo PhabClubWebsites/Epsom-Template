@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width">
+    <%= display_meta_tags %>
     <title><% if !club.blank? && !club.club_name.blank? %><%= club.club_name %><% else %>Phab<% end %></title>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'phab-icon.ico' %>

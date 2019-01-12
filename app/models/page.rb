@@ -21,4 +21,16 @@ class Page < ActiveRecord::Base
     
     has_attached_file :link_pdf_three
     validates_attachment_content_type :link_pdf_three, content_type: "application/pdf"
+    
+    def extract_keywords
+        if self.site_page === "event" || self.site_page === "news"
+            extra = self.site_page === "event" ? "event" : "news"
+        else 
+            extra = nil
+        end
+        title_keywords = self.title.split(" ")
+        club_keywords = Club.first.club_name.split(" ")
+        club_keywords << ["charity", extra]
+       return (title_keywords << club_keywords).flatten!
+    end
 end

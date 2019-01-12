@@ -82,6 +82,11 @@ class PagesController < ApplicationController
   def show
     @next_article = Page.where("site_page = ? AND id > ? AND published = ?", @page.site_page, @page.id, true).first
     @prev_article = Page.where("site_page = ? AND id < ? AND published = ?", @page.site_page, @page.id, true).last
+    if !@page.content_one.blank?
+      set_meta_tags title: "#{@page.title} - #{Club.first.club_name}",
+                description: @page.content_one.truncate(120, separator: ' '),
+                keywords: @page.extract_keywords
+    end
   end
   
   def event_list
@@ -105,6 +110,12 @@ class PagesController < ApplicationController
         @page.img_two = nil
       when "img_three"
         @page.img_three = nil
+      when "pdf_one"
+        @page.link_pdf_one = nil
+      when "pdf_two"
+        @page.link_pdf_two = nil
+      when "pdf_three"
+        @page.link_pdf_three = nil
     end
     if @page.save
       redirect_to edit_page_path(@page, site_page: @page.site_page)
@@ -153,6 +164,11 @@ class PagesController < ApplicationController
     @home_pages = Page.where("site_page = ? AND published = ?", "home", true).order(id: :asc)
     @all_home_pages = Page.where("site_page = ?", "home").order(id: :asc)
     @contact = Contact.new
+    if !@home_pages.blank?
+      set_meta_tags title: "Home - #{Club.first.club_name}",
+                description: @home_pages.first.content_one.truncate(180, separator: ' '),
+                keywords: @home_pages.first.extract_keywords
+    end
   end
   
   def about_us
@@ -160,6 +176,11 @@ class PagesController < ApplicationController
      @about_us_preview = Page.all.where("site_page = ?", "about")
      @volunteers = Page.all.where("site_page = ? AND published = ?", "volunteer", true)
      @volunteers_preview = Page.all.where("site_page = ?", "volunteer")
+     if !@about_us.blank?
+       set_meta_tags title: "About Us - #{Club.first.club_name}",
+                description: @about_us.first.content_one.truncate(180, separator: ' '),
+                keywords: @about_us.first.extract_keywords
+     end
   end
   
   def about_list
@@ -172,21 +193,30 @@ class PagesController < ApplicationController
   
   def news
      @news_pages = Page.where("site_page = ? AND published = ?", "news", true).paginate(:page => params[:page], :per_page => 5).order('id DESC')
+     set_meta_tags title: "News & Information - #{Club.first.club_name}",
+              description: "#{Club.first.club_name}'s latest news and articles. See what we've been up to this year!",
+              keywords: Club.first.club_name.split(" ").concat(["news, latest, articles, events, parties, charity"])
   end
   
   def events
     @event_pages = Page.where("site_page = ? AND published = ? AND date_of_event >= ?", "event", true, Date.today).paginate(:page => params[:page], :per_page => 5).order(date_of_event: :asc)
     @old_event_pages = Page.where("site_page = ? AND published = ? AND date_of_event < ?", "event", true, Date.today).paginate(:page => params[:page], :per_page => 3).order(date_of_event: :asc)
+    set_meta_tags title: "Activity Schedule - #{Club.first.club_name}",
+              description: "#{Club.first.club_name}'s upcoming events and parties. See what we've got planned for #{Time.current.year}!",
+              keywords: Club.first.club_name.split(" ").concat(["news, latest, articles, events, parties, charity"])
   end
   
   def contact_us
     @contact = Contact.new
+    set_meta_tags title: "Contact Us - #{Club.first.club_name}",
+              description: "#{Club.first.club_name}'s club and contact information. Here's where to find us and when we meet!",
+              keywords: Club.first.club_name.split(" ").concat(Club.first.split_address)
   end
   
   private
   
   def page_params
-        params.require(:page).permit(:title, :date_of_event, :time_of_event, 
+    params.require(:page).permit(:title, :date_of_event, :time_of_event, 
                     :content_one, :img_one, :img_one_format, :content_two, 
                     :img_two, :img_two_format, :content_three, :img_three, 
                     :img_three_format, :site_page, :admin_id, :links_position, 

@@ -12,14 +12,16 @@
                     <div class="apple_pagination">
                       <%= will_paginate @event_pages, :container => false, :previous_label => prev_page_button, :next_label => next_page_button  %>
                     </div>
-                    <hr style="margin-top: 0px;"></hr>
-                    <h4 style="padding-bottom: 20px; color: #56A644; font-size: 32px; text-align: center;">Previous Events</h4>
-                    <% @old_event_pages.each_with_index do |event, i| %>
-                        <%= render "article_preview", obj: event %>
+                    <% if !@old_event_pages.blank? %>
+                        <hr style="margin-top: 0px;"></hr>
+                        <h4 style="padding-bottom: 20px; color: #56A644; font-size: 32px; text-align: center;">Previous Events</h4>
+                        <% @old_event_pages.each_with_index do |event, i| %>
+                            <%= render "article_preview", obj: event %>
+                        <% end %>
+                        <div class="apple_pagination">
+                          <%= will_paginate @old_event_pages, :container => false, :previous_label => prev_page_button, :next_label => next_page_button  %>
+                        </div>
                     <% end %>
-                    <div class="apple_pagination">
-                      <%= will_paginate @old_event_pages, :container => false, :previous_label => prev_page_button, :next_label => next_page_button  %>
-                    </div>
                 </div>
             </div>
             <div class="col-md-4 col-sm-12 col-xs-12">
