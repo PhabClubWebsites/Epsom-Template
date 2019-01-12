@@ -22,13 +22,13 @@
             <h4 class="related-links-title" style="font-size: 24px;">Important Links: </h4>
             <ul class="related-links-list">
                 <% if !obj.link_text_one.blank? && (!obj.link_url_one.blank? || !obj.link_pdf_one.blank?) %>
-                    <li style="font-size: 18px;"><%= link_to obj.link_text_one, "#{obj.link_url_one.blank? ? obj.link_pdf_one.url : obj.link_url_one}", class: "related-link", target: "#{obj.link_url_one.blank? ?  "_blank" : "_self" }" %></li>
+                    <li style="font-size: 18px;"><%= link_to obj.link_text_one, "#{obj.link_url_one.blank? ? obj.link_pdf_one.url : obj.link_url_one}", class: "related-link", target: "_blank" %></li>
                 <% end %>
                 <% if !obj.link_text_two.blank? && (!obj.link_url_two.blank? || !obj.link_pdf_two.blank?)  %>
-                    <li style="font-size: 18px;"><%= link_to obj.link_text_two, "#{obj.link_url_two.blank? ? obj.link_pdf_two.url : obj.link_url_two}", class: "related-link", target: "#{obj.link_url_two.blank? ?  "_blank" : "_self" }" %></li>
+                    <li style="font-size: 18px;"><%= link_to obj.link_text_two, "#{obj.link_url_two.blank? ? obj.link_pdf_two.url : obj.link_url_two}", class: "related-link", target: "_blank" %></li>
                 <% end %>
                 <% if !obj.link_text_three.blank? && (!obj.link_url_three.blank? || !obj.link_pdf_three.blank?)  %>
-                    <li style="font-size: 18px;"><%= link_to obj.link_text_three, "#{obj.link_url_three.blank? ? obj.link_pdf_three.url : obj.link_url_three}", class: "related-link", target: "#{obj.link_url_three.blank? ?  "_blank" : "_self" }" %></li>
+                    <li style="font-size: 18px;"><%= link_to obj.link_text_three, "#{obj.link_url_three.blank? ? obj.link_pdf_three.url : obj.link_url_three}", class: "related-link", target: "_blank" %></li>
                 <% end %>
             </ul>
         </div>
@@ -113,13 +113,13 @@
             <h2 class="related-links-title" style="color: #56A644 !important">Related Links: </h2>
             <ul class="related-links-list">
                 <% if !obj.link_text_one.blank? && (!obj.link_url_one.blank? || !obj.link_pdf_one.blank?) %>
-                    <li style="font-size: 18px;"><%= link_to obj.link_text_one, "#{obj.link_url_one.blank? ? obj.link_pdf_one.url : obj.link_url_one}", class: "related-link", target: "#{obj.link_url_one.blank? ?  "_blank" : "_self" }" %></li>
+                    <li style="font-size: 18px;"><%= link_to obj.link_text_one, "#{obj.link_url_one.blank? ? obj.link_pdf_one.url : obj.link_url_one}", class: "related-link", target: "_blank" %></li>
                 <% end %>
                 <% if !obj.link_text_two.blank? && (!obj.link_url_two.blank? || !obj.link_pdf_two.blank?)  %>
-                    <li style="font-size: 18px;"><%= link_to obj.link_text_two, "#{obj.link_url_two.blank? ? obj.link_pdf_two.url : obj.link_url_two}", class: "related-link", target: "#{obj.link_url_two.blank? ?  "_blank" : "_self" }" %></li>
+                    <li style="font-size: 18px;"><%= link_to obj.link_text_two, "#{obj.link_url_two.blank? ? obj.link_pdf_two.url : obj.link_url_two}", class: "related-link", target: "_blank" %></li>
                 <% end %>
                 <% if !obj.link_text_three.blank? && (!obj.link_url_three.blank? || !obj.link_pdf_three.blank?)  %>
-                    <li style="font-size: 18px;"><%= link_to obj.link_text_three, "#{obj.link_url_three.blank? ? obj.link_pdf_three.url : obj.link_url_three}", class: "related-link", target: "#{obj.link_url_three.blank? ?  "_blank" : "_self" }" %></li>
+                    <li style="font-size: 18px;"><%= link_to obj.link_text_three, "#{obj.link_url_three.blank? ? obj.link_pdf_three.url : obj.link_url_three}", class: "related-link", target: "_blank" %></li>
                 <% end %>
             </ul>
             <hr></hr>

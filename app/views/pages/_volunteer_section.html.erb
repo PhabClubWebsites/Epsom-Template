@@ -68,6 +68,9 @@
                         <%= render partial: "pages/admin_cta_bar", locals: { obj: volunteer, padding_vertical: "0px" } %> 
                     <% end %>
                 </div>
+                <% unless i === volunteers.size-1 %>
+                    <hr style="margin-bottom: 40px;"></hr>
+                <% end %>
             <% end %>
         </div>
     <% end %>
