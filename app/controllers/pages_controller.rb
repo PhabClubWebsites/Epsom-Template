@@ -186,7 +186,12 @@ class PagesController < ApplicationController
   private
   
   def page_params
-    params.require(:page).permit(:title, :date_of_event, :time_of_event, :content_one, :img_one, :img_one_format, :content_two, :img_two, :img_two_format, :content_three, :img_three, :img_three_format, :site_page, :admin_id, :links_position, :link_text_one, :link_url_one, :link_text_two, :link_url_two, :link_text_three, :link_url_three)
+        params.require(:page).permit(:title, :date_of_event, :time_of_event, 
+                    :content_one, :img_one, :img_one_format, :content_two, 
+                    :img_two, :img_two_format, :content_three, :img_three, 
+                    :img_three_format, :site_page, :admin_id, :links_position, 
+                    :link_text_one, :link_url_one, :link_text_two, :link_url_two, 
+                    :link_text_three, :link_url_three, :link_pdf_one, :link_pdf_two, :link_pdf_three)
   end
   
   def set_page

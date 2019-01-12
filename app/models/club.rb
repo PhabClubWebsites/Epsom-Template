@@ -31,6 +31,24 @@ class Club < ActiveRecord::Base
                     default_url: "/images/:style/missing.png"
   validates_attachment_content_type :events_banner_img, content_type: /\Aimage\/.*\z/
   
+  has_attached_file :policies_one
+  validates_attachment_content_type :policies_one, content_type: "application/pdf"
+  
+  has_attached_file :policies_two
+  validates_attachment_content_type :policies_two, content_type: "application/pdf"
+  
+  has_attached_file :policies_three
+  validates_attachment_content_type :policies_three, content_type: "application/pdf"
+  
+  has_attached_file :policies_four
+  validates_attachment_content_type :policies_four, content_type: "application/pdf"
+  
+  has_attached_file :policies_five
+  validates_attachment_content_type :policies_five, content_type: "application/pdf"
+  
+  has_attached_file :policies_six
+  validates_attachment_content_type :policies_six, content_type: "application/pdf"
+  
   
   
   geocoded_by :meeting_address

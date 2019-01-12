@@ -12,23 +12,23 @@
     <% if obj.site_page == "event" && !obj.time_of_event.blank? %>
         <br>
         <small class="event-details">
-            <i class="glyphicon glyphicon-time"></i> <%= obj.time_of_event.strftime("%H:%M") %>
+            <i class="glyphicon glyphicon-time"></i> <%= obj.time_of_event.strftime("%l:%M%P") %>
         </small>
     <% end %>
 </div>
 <% if obj.links_position == "top" && !obj.link_text_one.blank? %>
     <div class="row related-links top">
         <div class="col-md-12 col-sm-12 col-xs-12">
-            <h4 class="related-links-title">Important Links: </h4>
+            <h4 class="related-links-title" style="font-size: 24px;">Important Links: </h4>
             <ul class="related-links-list">
-                <% if !obj.link_text_one.blank? %>
-                    <li><%= link_to obj.link_text_one, "https://#{obj.link_url_one}", class: "related-link" %></li>
+                <% if !obj.link_text_one.blank? && (!obj.link_url_one.blank? || !obj.link_pdf_one.blank?) %>
+                    <li style="font-size: 18px;"><%= link_to obj.link_text_one, "#{obj.link_url_one.blank? ? obj.link_pdf_one.url : obj.link_url_one}", class: "related-link", target: "#{obj.link_url_one.blank? ?  "_blank" : "_self" }" %></li>
                 <% end %>
-                <% if !obj.link_text_two.blank? %>
-                    <li><%= link_to obj.link_text_two, "https://#{obj.link_url_two}", class: "related-link" %></li>
+                <% if !obj.link_text_two.blank? && (!obj.link_url_two.blank? || !obj.link_pdf_two.blank?)  %>
+                    <li style="font-size: 18px;"><%= link_to obj.link_text_two, "#{obj.link_url_two.blank? ? obj.link_pdf_two.url : obj.link_url_two}", class: "related-link", target: "#{obj.link_url_two.blank? ?  "_blank" : "_self" }" %></li>
                 <% end %>
-                <% if !obj.link_text_three.blank? %>
-                    <li><%= link_to obj.link_text_three, "https://#{obj.link_url_three}", class: "related-link" %></li>
+                <% if !obj.link_text_three.blank? && (!obj.link_url_three.blank? || !obj.link_pdf_three.blank?)  %>
+                    <li style="font-size: 18px;"><%= link_to obj.link_text_three, "#{obj.link_url_three.blank? ? obj.link_pdf_three.url : obj.link_url_three}", class: "related-link", target: "#{obj.link_url_three.blank? ?  "_blank" : "_self" }" %></li>
                 <% end %>
             </ul>
         </div>
@@ -110,16 +110,16 @@
     <div class="row related-links">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <hr></hr>
-            <h4 class="related-links-title">Related Links: </h4>
+            <h2 class="related-links-title" style="color: #56A644 !important">Related Links: </h2>
             <ul class="related-links-list">
-                <% if !obj.link_text_one.blank? %>
-                    <li><%= link_to obj.link_text_one, "#{obj.link_url_one}", class: "related-link" %></li>
+                <% if !obj.link_text_one.blank? && (!obj.link_url_one.blank? || !obj.link_pdf_one.blank?) %>
+                    <li style="font-size: 18px;"><%= link_to obj.link_text_one, "#{obj.link_url_one.blank? ? obj.link_pdf_one.url : obj.link_url_one}", class: "related-link", target: "#{obj.link_url_one.blank? ?  "_blank" : "_self" }" %></li>
                 <% end %>
-                <% if !obj.link_text_two.blank? %>
-                    <li><%= link_to obj.link_text_two, "#{obj.link_url_two}", class: "related-link" %></li>
+                <% if !obj.link_text_two.blank? && (!obj.link_url_two.blank? || !obj.link_pdf_two.blank?)  %>
+                    <li style="font-size: 18px;"><%= link_to obj.link_text_two, "#{obj.link_url_two.blank? ? obj.link_pdf_two.url : obj.link_url_two}", class: "related-link", target: "#{obj.link_url_two.blank? ?  "_blank" : "_self" }" %></li>
                 <% end %>
-                <% if !obj.link_text_three.blank? %>
-                    <li><%= link_to obj.link_text_three, "#{obj.link_url_three}", class: "related-link" %></li>
+                <% if !obj.link_text_three.blank? && (!obj.link_url_three.blank? || !obj.link_pdf_three.blank?)  %>
+                    <li style="font-size: 18px;"><%= link_to obj.link_text_three, "#{obj.link_url_three.blank? ? obj.link_pdf_three.url : obj.link_url_three}", class: "related-link", target: "#{obj.link_url_three.blank? ?  "_blank" : "_self" }" %></li>
                 <% end %>
             </ul>
             <hr></hr>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181119002310) do
+ActiveRecord::Schema.define(version: 20190112111312) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -72,6 +72,50 @@ ActiveRecord::Schema.define(version: 20181119002310) do
     t.integer  "contact_banner_img_file_size"
     t.datetime "contact_banner_img_updated_at"
     t.string   "postal_address"
+    t.string   "policies_one_file_name"
+    t.string   "policies_one_content_type"
+    t.integer  "policies_one_file_size"
+    t.datetime "policies_one_updated_at"
+    t.string   "policies_two_file_name"
+    t.string   "policies_two_content_type"
+    t.integer  "policies_two_file_size"
+    t.datetime "policies_two_updated_at"
+    t.string   "policies_three_file_name"
+    t.string   "policies_three_content_type"
+    t.integer  "policies_three_file_size"
+    t.datetime "policies_three_updated_at"
+    t.string   "policies_four_file_name"
+    t.string   "policies_four_content_type"
+    t.integer  "policies_four_file_size"
+    t.datetime "policies_four_updated_at"
+    t.string   "policies_five_file_name"
+    t.string   "policies_five_content_type"
+    t.integer  "policies_five_file_size"
+    t.datetime "policies_five_updated_at"
+    t.string   "policies_six_file_name"
+    t.string   "policies_six_content_type"
+    t.integer  "policies_six_file_size"
+    t.datetime "policies_six_updated_at"
+    t.string   "link_pdf_one_file_name"
+    t.string   "link_pdf_one_content_type"
+    t.integer  "link_pdf_one_file_size"
+    t.datetime "link_pdf_one_updated_at"
+    t.string   "link_pdf_two_file_name"
+    t.string   "link_pdf_two_content_type"
+    t.integer  "link_pdf_two_file_size"
+    t.datetime "link_pdf_two_updated_at"
+    t.string   "policies_one_link"
+    t.string   "policies_one_text"
+    t.string   "policies_two_link"
+    t.string   "policies_two_text"
+    t.string   "policies_three_link"
+    t.string   "policies_three_text"
+    t.string   "policies_four_link"
+    t.string   "policies_four_text"
+    t.string   "policies_five_link"
+    t.string   "policies_five_text"
+    t.string   "policies_six_link"
+    t.string   "policies_six_text"
   end
 
   create_table "galleries", force: :cascade do |t|
@@ -89,11 +133,11 @@ ActiveRecord::Schema.define(version: 20181119002310) do
     t.text     "content_one"
     t.text     "content_two"
     t.text     "content_three"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
     t.string   "site_page"
     t.integer  "admin_id"
-    t.boolean  "published",              default: false
+    t.boolean  "published",                   default: false
     t.datetime "date_of_event"
     t.string   "img_one_file_name"
     t.string   "img_one_content_type"
@@ -118,6 +162,18 @@ ActiveRecord::Schema.define(version: 20181119002310) do
     t.integer  "img_three_file_size"
     t.datetime "img_three_updated_at"
     t.string   "img_three_format"
+    t.string   "link_pdf_one_file_name"
+    t.string   "link_pdf_one_content_type"
+    t.integer  "link_pdf_one_file_size"
+    t.datetime "link_pdf_one_updated_at"
+    t.string   "link_pdf_two_file_name"
+    t.string   "link_pdf_two_content_type"
+    t.integer  "link_pdf_two_file_size"
+    t.datetime "link_pdf_two_updated_at"
+    t.string   "link_pdf_three_file_name"
+    t.string   "link_pdf_three_content_type"
+    t.integer  "link_pdf_three_file_size"
+    t.datetime "link_pdf_three_updated_at"
   end
 
   create_table "pictures", force: :cascade do |t|

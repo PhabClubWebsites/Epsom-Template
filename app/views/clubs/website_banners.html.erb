@@ -9,19 +9,237 @@
   .edit-img-container a {
     margin-left: 10px;
   }
+  
+  .related-cta-row {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+  }
+  
+  .ml-1 {
+    margin-left: 10px;
+  }
+  
+  .mt-1 {
+    margin-top: 10px;
+  }
+  
+  .p-0 {
+    padding: 0;
+  }
+  
+  .m-0 {
+    margin: 0 !important;
+  }
+  
+  .btn-phab {
+    min-width: auto !important;
+  }
 </style>
 <div class="content">
   <div class="page-header">
     <h1>Website</h1>
   </div>
-  
-
-
     <%= form_for(@club, html: {multipart: true, role: "form"}) do |f| %>
+      <div class="row" style="margin-bottom: 20px;">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <h4>Club policies</h4>
+          <p class="dashboard-p">Don't forget to click Update below once you've selected your files.</p>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <div class="image-table-area">
+            <div class="row m-0">
+              <div class="col-md-12 p-0">
+                <p class="m-0" style="font-size: 16px; font-weight: 600;">First Policy</p>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12 p-0 mt-1">
+                <%= f.label "Text" %>
+                <%= f.text_field :policies_one_text, class:"form-control", placeholder: "Eg. Our child protection policies" %>
+              </div>
+              <div class="related-block-1 col-md-12 col-sm-12 col-xs-12 mt-1 p-0">
+                <%= f.label "Content" %>
+                <div <% if !club.policies_one.blank? || !club.policies_one_link.blank? %>style="display: none;"<% end %> class="related-cta-row">
+                  <button type="button" class="display_url btn btn-md btn-phab" style="margin: 0;">Link</button>
+                  <p class="or_text dashboard-p">OR</p>
+                  <button type="button" class="display_pdf btn btn-md btn-phab" style="margin: 0;">PDF</button>
+                </div>
+                <div class="show_url" <% if club.policies_one_link.blank? %>style="display: none;"<% end %>>
+                  <%= f.text_field :policies_one_link, class:"form-control", placeholder: "Eg. www.google.com" %>
+                </div>
+                <div class="show_pdf" <% if club.policies_one.blank? %>style="display: none;"<% end %>>
+                  <% if club.policies_one.blank? %>
+                    <%= f.file_field :policies_one %>
+                  <% else %>
+                    <%= link_to club.policies_one_file_name, club.policies_one.url, target: "_blank" %>
+                    <%= link_to 'Delete', remove_image_club_path(id: club.id, item: "pdf_one"), method: :put, data: 
+                                  {confirm: "Are you sure you want to delete this PDF?"}, class:"btn btn-md btn-danger ml-1"  %>
+                  <% end %>
+                </div>
+                <button type="button" class="switch_option btn btn-md btn-danger" style="margin-top: 10px; <% if club.policies_one_link.blank? %>display: none;<% end %>">Switch</button>
+              </div>
+            </div>
+            <hr style="border-top: 1px solid white;"></hr>
+            <div class="row m-0">
+              <div class="col-md-12 p-0">
+                <p class="m-0" style="font-size: 16px; font-weight: 600;">Second Policy</p>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12 p-0 mt-1">
+                <%= f.label "Text" %>
+                <%= f.text_field :policies_two_text, class:"form-control", placeholder: "Eg. Our child protection policies" %>
+              </div>
+              <div class="related-block-2 col-md-12 col-sm-12 col-xs-12 mt-1 p-0">
+                <%= f.label "Content" %>
+                <div <% if !club.policies_two.blank? || !club.policies_two_link.blank? %>style="display: none;"<% end %> class="related-cta-row">
+                  <button type="button" class="display_url btn btn-md btn-phab" style="margin: 0;">Link</button>
+                  <p class="or_text dashboard-p">OR</p>
+                  <button type="button" class="display_pdf btn btn-md btn-phab" style="margin: 0;">PDF</button>
+                </div>
+                <div class="show_url" <% if club.policies_two_link.blank? %>style="display: none;"<% end %>>
+                  <%= f.text_field :policies_two_link, class:"form-control", placeholder: "Eg. www.google.com" %>
+                </div>
+                <div class="show_pdf" <% if club.policies_two.blank? %>style="display: none;"<% end %>>
+                  <% if club.policies_two.blank? %>
+                    <%= f.file_field :policies_two %>
+                  <% else %>
+                    <%= link_to club.policies_two_file_name, club.policies_two.url, target: "_blank" %>
+                    <%= link_to 'Delete', remove_image_club_path(id: club.id, item: "pdf_two"), method: :put, data: 
+                                  {confirm: "Are you sure you want to delete this PDF?"}, class:"btn btn-md btn-danger ml-1"  %>
+                  <% end %>
+                </div>
+                <button type="button" class="switch_option btn btn-md btn-danger" style="margin-top: 10px; <% if club.policies_two_link.blank? %>display: none;<% end %>">Switch</button>
+              </div>
+            </div>
+            <hr style="border-top: 1px solid white;"></hr>
+            <div class="row m-0">
+              <div class="col-md-12 p-0">
+                <p class="m-0" style="font-size: 16px; font-weight: 600;">Third Policy</p>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12 p-0 mt-1">
+                <%= f.label "Text" %>
+                <%= f.text_field :policies_three_text, class:"form-control", placeholder: "Eg. Our child protection policies" %>
+              </div>
+              <div class="related-block-1 col-md-12 col-sm-12 col-xs-12 mt-1 p-0">
+                <%= f.label "Content" %>
+                <div <% if !club.policies_three.blank? || !club.policies_three_link.blank? %>style="display: none;"<% end %> class="related-cta-row">
+                  <button type="button" class="display_url btn btn-md btn-phab" style="margin: 0;">Link</button>
+                  <p class="or_text dashboard-p">OR</p>
+                  <button type="button" class="display_pdf btn btn-md btn-phab" style="margin: 0;">PDF</button>
+                </div>
+                <div class="show_url" <% if club.policies_three_link.blank? %>style="display: none;"<% end %>>
+                  <%= f.text_field :policies_three_link, class:"form-control", placeholder: "Eg. www.google.com" %>
+                </div>
+                <div class="show_pdf" <% if club.policies_three.blank? %>style="display: none;"<% end %>>
+                  <% if club.policies_three.blank? %>
+                    <%= f.file_field :policies_three %>
+                  <% else %>
+                    <%= link_to club.policies_one_file_name, club.policies_three.url, target: "_blank" %>
+                    <%= link_to 'Delete', remove_image_club_path(id: club.id, item: "pdf_three"), method: :put, data: 
+                                  {confirm: "Are you sure you want to delete this PDF?"}, class:"btn btn-md btn-danger ml-1"  %>
+                  <% end %>
+                </div>
+                <button type="button" class="switch_option btn btn-md btn-danger" style="margin-top: 10px; <% if club.policies_three_link.blank? %>display: none;<% end %>">Switch</button>
+              </div>
+            </div>
+            <hr style="border-top: 1px solid white;"></hr>
+            <div class="row m-0">
+              <div class="col-md-12 p-0">
+                <p class="m-0" style="font-size: 16px; font-weight: 600;">Fourth Policy</p>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12 p-0 mt-1">
+                <%= f.label "Text" %>
+                <%= f.text_field :policies_four_text, class:"form-control", placeholder: "Eg. Our child protection policies" %>
+              </div>
+              <div class="related-block-1 col-md-12 col-sm-12 col-xs-12 mt-1 p-0">
+                <%= f.label "Content" %>
+                <div <% if !club.policies_four.blank? || !club.policies_four_link.blank? %>style="display: none;"<% end %> class="related-cta-row">
+                  <button type="button" class="display_url btn btn-md btn-phab" style="margin: 0;">Link</button>
+                  <p class="or_text dashboard-p">OR</p>
+                  <button type="button" class="display_pdf btn btn-md btn-phab" style="margin: 0;">PDF</button>
+                </div>
+                <div class="show_url" <% if club.policies_four_link.blank? %>style="display: none;"<% end %>>
+                  <%= f.text_field :policies_four_link, class:"form-control", placeholder: "Eg. www.google.com" %>
+                </div>
+                <div class="show_pdf" <% if club.policies_four.blank? %>style="display: none;"<% end %>>
+                  <% if club.policies_four.blank? %>
+                    <%= f.file_field :policies_four %>
+                  <% else %>
+                    <%= link_to club.policies_one_file_name, club.policies_four.url, target: "_blank" %>
+                    <%= link_to 'Delete', remove_image_club_path(id: club.id, item: "pdf_four"), method: :put, data: 
+                                  {confirm: "Are you sure you want to delete this PDF?"}, class:"btn btn-md btn-danger ml-1"  %>
+                  <% end %>
+                </div>
+                <button type="button" class="switch_option btn btn-md btn-danger" style="margin-top: 10px; <% if club.policies_four_link.blank? %>display: none;<% end %>">Switch</button>
+              </div>
+            </div>
+            <hr style="border-top: 1px solid white;"></hr>
+            <div class="row m-0">
+              <div class="col-md-12 p-0">
+                <p class="m-0" style="font-size: 16px; font-weight: 600;">Fifth Policy</p>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12 p-0 mt-1">
+                <%= f.label "Text" %>
+                <%= f.text_field :policies_five_text, class:"form-control", placeholder: "Eg. Our child protection policies" %>
+              </div>
+              <div class="related-block-1 col-md-12 col-sm-12 col-xs-12 mt-1 p-0">
+                <%= f.label "Content" %>
+                <div <% if !club.policies_five.blank? || !club.policies_five_link.blank? %>style="display: none;"<% end %> class="related-cta-row">
+                  <button type="button" class="display_url btn btn-md btn-phab" style="margin: 0;">Link</button>
+                  <p class="or_text dashboard-p">OR</p>
+                  <button type="button" class="display_pdf btn btn-md btn-phab" style="margin: 0;">PDF</button>
+                </div>
+                <div class="show_url" <% if club.policies_five_link.blank? %>style="display: none;"<% end %>>
+                  <%= f.text_field :policies_five_link, class:"form-control", placeholder: "Eg. www.google.com" %>
+                </div>
+                <div class="show_pdf" <% if club.policies_five.blank? %>style="display: none;"<% end %>>
+                  <% if club.policies_five.blank? %>
+                    <%= f.file_field :policies_five %>
+                  <% else %>
+                    <%= link_to club.policies_one_file_name, club.policies_five.url, target: "_blank" %>
+                    <%= link_to 'Delete', remove_image_club_path(id: club.id, item: "pdf_one"), method: :put, data: 
+                                  {confirm: "Are you sure you want to delete this PDF?"}, class:"btn btn-md btn-danger ml-1"  %>
+                  <% end %>
+                </div>
+                <button type="button" class="switch_option btn btn-md btn-danger" style="margin-top: 10px; <% if club.policies_five_link.blank? %>display: none;<% end %>">Switch</button>
+              </div>
+            </div>
+            <hr style="border-top: 1px solid white;"></hr>
+            <div class="row m-0">
+              <div class="col-md-12 p-0">
+                <p class="m-0" style="font-size: 16px; font-weight: 600;">Sixth Policy</p>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12 p-0 mt-1">
+                <%= f.label "Text" %>
+                <%= f.text_field :policies_six_text, class:"form-control", placeholder: "Eg. Our child protection policies" %>
+              </div>
+              <div class="related-block-1 col-md-12 col-sm-12 col-xs-12 mt-1 p-0">
+                <%= f.label "Content" %>
+                <div <% if !club.policies_six.blank? || !club.policies_six_link.blank? %>style="display: none;"<% end %> class="related-cta-row">
+                  <button type="button" class="display_url btn btn-md btn-phab" style="margin: 0;">Link</button>
+                  <p class="or_text dashboard-p">OR</p>
+                  <button type="button" class="display_pdf btn btn-md btn-phab" style="margin: 0;">PDF</button>
+                </div>
+                <div class="show_url" <% if club.policies_six_link.blank? %>style="display: none;"<% end %>>
+                  <%= f.text_field :policies_six_link, class:"form-control", placeholder: "Eg. www.google.com" %>
+                </div>
+                <div class="show_pdf" <% if club.policies_six.blank? %>style="display: none;"<% end %>>
+                  <% if club.policies_six.blank? %>
+                    <%= f.file_field :policies_six %>
+                  <% else %>
+                    <%= link_to club.policies_one_file_name, club.policies_six.url, target: "_blank" %>
+                    <%= link_to 'Delete', remove_image_club_path(id: club.id, item: "pdf_one"), method: :put, data: 
+                                  {confirm: "Are you sure you want to delete this PDF?"}, class:"btn btn-md btn-danger ml-1"  %>
+                  <% end %>
+                </div>
+                <button type="button" class="switch_option btn btn-md btn-danger" style="margin-top: 10px; <% if club.policies_six_link.blank? %>display: none;<% end %>">Switch</button>
+              </div>
+            </div>
+          </div>  
+        </div>
+      </div>
       <div class="row">
         <div class="col-md-4 col-sm-4 col-xs-12">
-          <h4>Images</h4>
-          <p class="dashboard-p">Don't forget to click Update once you've selected your images.</p>
+          <h4>Website images</h4>
+          <p class="dashboard-p">Don't forget to click Update below once you've selected your files.</p>
         </div>
         <div class="col-md-8 col-sm-8 col-xs-12">
           <div class="image-table-area">
@@ -128,3 +346,23 @@
       </div>
     <% end %>
 </div>
+<script>
+$(document).on("turbolinks:load", function() {
+    $("body").on("click", ".display_url", function() {
+      var container = $(this).parents("div[class^='related-block-']");
+      container.find(".show_pdf, .related-cta-row").hide();
+      container.find(".show_url, .switch_option").show();
+    })
+    $("body").on("click", ".display_pdf", function() {
+      var container = $(this).parents("div[class^='related-block-']");
+      container.find(".show_url, .related-cta-row").hide();
+      container.find(".show_pdf, .switch_option").show();
+      container.find("input[type='text']").val("");
+    })
+    $("body").on("click", ".switch_option", function() {
+      var container = $(this).parents("div[class^='related-block-']");
+      container.find(".related-cta-row").show();
+      container.find(".show_pdf, .show_url, .switch_option").hide();
+    });
+});
+</script>

@@ -1,0 +1,90 @@
+<% if !club.policies_one_text.blank? && (!club.policies_one.blank? || !club.policies_one_link.blank?) %>
+    <style>
+        .home-row {    
+            display: flex;
+            align-items: flex-start;
+            width: 100%;
+            padding: 0px 0px 40px 0px;
+        }    
+        .home-header {
+            flex: 1 1 30%;
+            padding-right: 20px;
+        }
+        .home-content {
+            flex: 1 1 70%;
+            border-left: 4px solid #56A644;
+            padding-left: 30px;
+            padding-top: 10px;
+            font-size: 18px;
+        }
+        .home-content img {
+            display: block;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 16px;
+        }
+        
+        .home-content a {
+            color: #56A644 !important;
+        }
+        
+        .related-links-list li {
+            list-style: none !important;
+        }
+        
+        @media (max-width: 769px) {
+            .home-row {    
+                flex-wrap: wrap;
+            }    
+            .home-content,
+            .home-header {
+                flex: 1 1 100% !important;
+                padding-bottom: 30px;
+            }
+            .home-content {
+                margin-left: 30px;
+            }
+            
+            .home-header h2 {
+                margin-top: 0 !important;
+            }
+        }
+    </style>
+    <div class="home-row">
+        <div class="home-header">
+            <h2 style="color: #56A644;">Our Policies</h2>
+        </div>
+        <div class="home-content">
+            <ul class="related-links-list" style="padding: 0;">
+                <% if !obj.policies_one_text.blank? && (!obj.policies_one_link.blank? || !obj.policies_one.blank?) %>
+                    <li style="font-size: 18px;"><%= link_to obj.policies_one_text, "#{obj.policies_one_link.blank? ? obj.policies_one.url : obj.policies_one_link}", class: "related-link", target: "_blank" %></li>
+                <% end %>
+                <% if !obj.policies_two_text.blank? && (!obj.policies_two_link.blank? || !obj.policies_two.blank?)  %>
+                    <li style="font-size: 18px;"><%= link_to obj.policies_two_text, "#{obj.policies_two_link.blank? ? obj.link_pdf_two.url : obj.policies_two_link}", class: "related-link", target: "_blank" %></li>
+                <% end %>
+                <% if !obj.policies_three_text.blank? && (!obj.policies_three_link.blank? || !obj.policies_three.blank?)  %>
+                    <li style="font-size: 18px;"><%= link_to obj.policies_three_text, "#{obj.policies_three_link.blank? ? obj.policies_three.url : obj.policies_three_link}", class: "related-link", target: "_blank" %></li>
+                <% end %>
+            </ul>
+            <% if admin_signed_in? %>
+                <style>
+                    .cta-row {
+                        width: 100%;
+                        display: flex;
+                        justify-content: flex-end;
+                        align-items: center;
+                        padding: 0;
+                    }
+                </style>
+                <div class="cta-row">
+                    <li class="list-unstyled dropdown">
+                      <i class="glyphicon glyphicon-option-vertical" data-toggle="dropdown"></i>
+                      <ul class="dropdown-menu dropdown-menu-right">
+                          <li><%= link_to "Edit", website_banners_path(club_id: club.id) %></li>
+                      </ul>
+                    </li>
+                </div>
+            <% end %>
+        </div>
+    </div>
+<% end %>

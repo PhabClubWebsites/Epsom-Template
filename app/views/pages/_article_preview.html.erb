@@ -7,7 +7,7 @@
             </h2>    
             <span style="font-size: 16px; color: #56A644; display: block; padding-top: 8px;">
                 <i class="fa fa-calendar" style="padding-right: 6px;"></i><%= obj.date_of_event.strftime("%-d %b, %Y") %>
-                <i class="glyphicon glyphicon-time" style="padding-right: 6px; padding-left: 20px;"></i><%= obj.date_of_event.strftime("%l:%M%P") %>
+                <i class="glyphicon glyphicon-time" style="padding-right: 6px; padding-left: 20px;"></i><%= obj.time_of_event.strftime("%l:%M%P") %>
             </span>
         <% else %>
             <h2 class="article-preview-title">

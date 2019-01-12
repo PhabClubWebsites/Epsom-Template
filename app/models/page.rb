@@ -12,4 +12,13 @@ class Page < ActiveRecord::Base
     validates_attachment_content_type :img_three, content_type: /\Aimage\/.*\z/
     
     validates :title, :content_one, presence: true
+    
+    has_attached_file :link_pdf_one
+    validates_attachment_content_type :link_pdf_one, content_type: "application/pdf"
+    
+    has_attached_file :link_pdf_two
+    validates_attachment_content_type :link_pdf_two, content_type: "application/pdf"
+    
+    has_attached_file :link_pdf_three
+    validates_attachment_content_type :link_pdf_three, content_type: "application/pdf"
 end
