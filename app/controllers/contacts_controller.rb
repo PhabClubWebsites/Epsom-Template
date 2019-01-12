@@ -6,13 +6,19 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(params[:contact])
-    @contact.request = request
-    if @contact.deliver
-      flash[:success] = 'Your message sent successfully!'
-      redirect_to root_path
+    check = @contact.nolink
+    if check
+      @contact.request = request
+      if @contact.deliver
+        flash[:success] = 'Your message sent successfully!'
+        redirect_to root_path
+      else
+        flash[:danger] = 'There was a problem sending your message.'
+        redirect_to contact_us_path
+      end
     else
-      flash[:error] = 'There was a problem sending your message.'
-      redirect_to contact_us_path
+      flash[:danger] = 'There was a problem sending your message.'
+      redirect_to root_path
     end
   end
 end

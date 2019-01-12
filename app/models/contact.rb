@@ -4,6 +4,15 @@ class Contact < MailForm::Base
   attribute :message,   :validate => true
   attribute :nickname,  :captcha  => true
 
+  def nolink
+    puts self.message
+    if self.message.include?("http") || self.message.include?("www")
+      return false
+    else
+      return true
+    end
+  end
+
   def headers
       club = Club.first
     {

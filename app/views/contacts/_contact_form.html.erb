@@ -13,10 +13,10 @@
     </div>    
     
     
-    
-    <%= f.label :nickname, class:"hidden" %>
-    <%= f.text_field :nickname, hint: 'leave this field blank', class:"hidden" %>
-    
+    <div class="hidden">
+        <%= f.label :nickname %>
+        <%= f.text_field :nickname %>
+    </div>
     
     <%= f.submit 'Send Message', class: "btn btn-phab-form btn-md" %>
 <% end %>
