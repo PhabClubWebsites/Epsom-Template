@@ -13,7 +13,9 @@
                       <%= will_paginate @event_pages, :container => false, :previous_label => prev_page_button, :next_label => next_page_button  %>
                     </div>
                     <% if !@old_event_pages.blank? %>
-                        <hr style="margin-top: 0px;"></hr>
+                        <% if !@event_pages.blank? %>
+                            <hr style="margin-top: 0px;"></hr>
+                        <% end %>
                         <h4 style="padding-bottom: 20px; color: #56A644; font-size: 32px; text-align: center;">Previous Events</h4>
                         <% @old_event_pages.each_with_index do |event, i| %>
                             <%= render "article_preview", obj: event %>
