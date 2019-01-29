@@ -207,6 +207,7 @@ class PagesController < ApplicationController
   end
   
   def contact_us
+    @gm_key = ENV['GM_KEY']
     @contact = Contact.new
     set_meta_tags title: "Contact Us - #{Club.first.club_name}",
               description: "#{Club.first.club_name}'s club and contact information. Here's where to find us and when we meet!",
