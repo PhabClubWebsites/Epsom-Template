@@ -6,7 +6,8 @@ class Contact < MailForm::Base
 
   def nolink
     puts self.message
-    if self.message.include?("http") || self.message.include?("www")
+    msg_len = self.message.scan(/[\w-]+/).size
+    if self.message.include?("http") || self.message.include?("www") || msg_len > 500
       return false
     else
       return true
