@@ -211,7 +211,7 @@ class PagesController < ApplicationController
     @contact = Contact.new
     set_meta_tags title: "Contact Us - #{Club.first.club_name}",
               description: "#{Club.first.club_name}'s club and contact information. Here's where to find us and when we meet!",
-              keywords: Club.first.club_name.split(" ").concat(Club.first.split_address)
+              keywords: Club.first.club_name.split(" ").concat(!Club.first.meeting_address.blank? ? Club.first.split_address : [])
   end
   
   private

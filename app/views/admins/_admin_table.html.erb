@@ -1,4 +1,4 @@
 <tr>
   <td style="font-weight: bold" class="text-success"><%= obj.email %></td>
-  <td class="text-right"><%= obj.last_sign_in_at.strftime("%-d/%-m/%y") %></td>
+  <td class="text-right"><%= obj.last_sign_in_at.strftime("%-d/%-m/%y") if obj.last_sign_in_at %></td>
 </tr>
