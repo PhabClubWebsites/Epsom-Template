@@ -52,7 +52,7 @@
                 <% @pictures.each_with_index do |pic, i| %>
                   <div class="new-img-container-block">
                     <div style="position: relative; width: 100%; overflow: hidden; cursor: pointer;">
-                      <%= image_tag(pic.image.url(:medium), class:"gallery-#{i}-thumbnail-new") %>
+                      <%= image_tag(pic.image.url, class:"gallery-#{i}-thumbnail-new") %>
                     </div>
                     <% if !pic.description.blank? %>
                       <div class="image-caption">
@@ -98,7 +98,7 @@
 <!--      <button type="button" class="image-close" id="close_gallery">&times;</button>-->
       <%#= image_tag(@gallery.pictures.first.image.url, class:"image-display--img active") %>
 <!--      <%# @gallery.pictures.each do |pic| %>-->
-<!--        <%#= image_tag(pic.image.url(:medium),  class:"image-display--img", id:"lg_img_#{pic.id}") %>-->
+<!--        <%#= image_tag(pic.image.url,  class:"image-display--img", id:"lg_img_#{pic.id}") %>-->
 <!--      <%# end %>-->
 <!--    </div>-->
 <!--    <div class="image-text" id="image_text_box">-->
@@ -279,7 +279,7 @@
   </div>
   <div class="slider">
     <% @gallery.pictures.reverse.each_with_index do |pic, i| %>
-      <%= image_tag(pic.image.url(:medium)) %>
+      <%= image_tag(pic.image.url) %>
     <% end %>  
   </div>
   <div class="slider-caption">

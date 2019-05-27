@@ -36,15 +36,15 @@
 <% end %>
 <div class="content__text">
     <% if !obj.img_one.blank? && obj.img_one_format == "in-square" %>
-        <%= image_tag(obj.img_one.url(:medium), class:"inline-square") %>
+        <%= image_tag(obj.img_one.url, class:"inline-square") %>
     <% end %>
     <div class="content-block" id="text_box_one"><%= sanitize obj.content_one %></div>
     <% if !obj.img_one.blank? && obj.img_one_format != "in-square" %>
         <div class="image-separator">
             <% if obj.img_one_format == "banner" %>
-                <%= image_tag(obj.img_one.url(:medium), class:"banner") %> 
+                <%= image_tag(obj.img_one.url, class:"banner") %> 
             <% elsif obj.img_one_format == "square-sep" %>
-                <%= image_tag(obj.img_one.url(:medium), class:"square-sep") %>
+                <%= image_tag(obj.img_one.url, class:"square-sep") %>
             <% end %>
         </div>
     <% end %>
@@ -52,15 +52,15 @@
         <% if !obj.img_two.blank? && obj.img_two_format != "in-square" %>
             <div class="image-separator">
                 <% if obj.img_two_format == "banner" && !obj.img_one.blank? %>
-                    <%= image_tag(obj.img_two.url(:medium), class:"banner") %> 
+                    <%= image_tag(obj.img_two.url, class:"banner") %> 
                 <% elsif obj.img_two_format == "square-sep" && !obj.img_one.blank? %>
-                    <%= image_tag(obj.img_two.url(:medium), class:"square-sep") %>
+                    <%= image_tag(obj.img_two.url, class:"square-sep") %>
                 <% end %>
             </div>
         <% end %>
     <% end %>
     <% if !obj.img_two_format.blank? && obj.img_two_format == "in-square" %>
-        <%= image_tag(obj.img_two.url(:medium), class:"inline-square") %>
+        <%= image_tag(obj.img_two.url, class:"inline-square") %>
     <% end %>
     <% if !obj.content_two.blank? %>
         <div class="content-block"><%= sanitize obj.content_two %></div>
@@ -68,9 +68,9 @@
             <% if obj.img_one_format == "banner" || obj.img_one_format == "square-sep" %>
                 <div class="image-separator">
                     <% if obj.img_two_format == "banner" && !obj.img_one.blank? %>
-                        <%= image_tag(obj.img_two.url(:medium), class:"banner") %> 
+                        <%= image_tag(obj.img_two.url, class:"banner") %> 
                     <% elsif obj.img_two_format == "square-sep" %>
-                        <%= image_tag(obj.img_two.url(:medium), class:"square-sep") %>
+                        <%= image_tag(obj.img_two.url, class:"square-sep") %>
                     <% end %>
                 </div>
             <% end %>
@@ -78,14 +78,14 @@
         <% if obj.img_one_format == "in-square" || obj.img_two_format == "in-square" %>
             <div class="image-separator">
                 <% if obj.img_three_format == "banner" && !obj.img_three.blank? %>
-                    <%= image_tag(obj.img_three.url(:medium), class:"banner") %> 
+                    <%= image_tag(obj.img_three.url, class:"banner") %> 
                 <% elsif obj.img_three_format == "square-sep" && !obj.img_three.blank? %>
-                    <%= image_tag(obj.img_three.url(:medium), class:"square-sep") %>
+                    <%= image_tag(obj.img_three.url, class:"square-sep") %>
                 <% end %>
             </div>
         <% end %>
         <% if !obj.img_three.blank? && obj.img_three_format == "in-square" %>
-            <%= image_tag(obj.img_three.url(:medium), class:"inline-square") %>
+            <%= image_tag(obj.img_three.url, class:"inline-square") %>
         <% end %>
         <% if !obj.content_three.blank? %>
             <div class="content-block"><%= sanitize obj.content_three %></div>
@@ -94,9 +94,9 @@
             <% if obj.img_one_format != "in-square" && obj.img_two_format != "in-square" %>
                 <div class="image-separator">
                     <% if obj.img_three_format == "banner" %>
-                        <%= image_tag(obj.img_three.url(:medium), class:"banner") %> 
+                        <%= image_tag(obj.img_three.url, class:"banner") %> 
                     <% elsif obj.img_three_format == "square-sep" %>
-                        <%= image_tag(obj.img_three.url(:medium), class:"square-sep") %>
+                        <%= image_tag(obj.img_three.url, class:"square-sep") %>
                     <% end %>
                 </div>
             <% end %>
