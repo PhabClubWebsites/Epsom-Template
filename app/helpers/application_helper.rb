@@ -8,6 +8,10 @@ module ApplicationHelper
             return ''
         end
     end
+
+    def is_super_admin
+       current_admin.email === "george.whittingham@phab.org.uk"
+    end
     
     def homepage
        homepage = Page.all.where("site_page = ?", "home").first 
