@@ -65,6 +65,15 @@
                 <% if !obj.policies_three_text.blank? && (!obj.policies_three_link.blank? || !obj.policies_three.blank?)  %>
                     <li style="font-size: 18px;"><%= link_to obj.policies_three_text, "#{obj.policies_three_link.blank? ? obj.policies_three.url : obj.policies_three_link}", class: "related-link", target: "_blank" %></li>
                 <% end %>
+                <% if !obj.policies_four_text.blank? && (!obj.policies_four_link.blank? || !obj.policies_four.blank?)  %>
+                    <li style="font-size: 18px;"><%= link_to obj.policies_four_text, "#{obj.policies_four_link.blank? ? obj.policies_four.url : obj.policies_four_link}", class: "related-link", target: "_blank" %></li>
+                <% end %>
+                <% if !obj.policies_five_text.blank? && (!obj.policies_five_link.blank? || !obj.policies_five.blank?)  %>
+                    <li style="font-size: 18px;"><%= link_to obj.policies_five_text, "#{obj.policies_five_link.blank? ? obj.policies_five.url : obj.policies_five_link}", class: "related-link", target: "_blank" %></li>
+                <% end %>
+                <% if !obj.policies_six_text.blank? && (!obj.policies_six_link.blank? || !obj.policies_six.blank?)  %>
+                    <li style="font-size: 18px;"><%= link_to obj.policies_six_text, "#{obj.policies_six_link.blank? ? obj.policies_six.url : obj.policies_six_link}", class: "related-link", target: "_blank" %></li>
+                <% end %>
             </ul>
             <% if admin_signed_in? %>
                 <style>

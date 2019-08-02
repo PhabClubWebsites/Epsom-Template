@@ -1,4 +1,12 @@
 <tr>
   <td style="font-weight: bold" class="text-success"><%= obj.email %></td>
   <td class="text-right"><%= obj.last_sign_in_at.strftime("%-d/%-m/%y") if obj.last_sign_in_at %></td>
+  <% if is_super_admin %>
+    <td>
+      <% unless obj.id === current_admin.id %>
+        <%= link_to "Delete", delete_admin_path(id: obj.id), method: :delete, data: 
+              {confirm: "Are you sure you want to delete this admin user?"}, style:"float: right; color: red;" %>
+      <% end %>
+    </td>
+  <% end %>
 </tr>

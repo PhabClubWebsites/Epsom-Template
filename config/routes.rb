@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   get 'volunteer_list', to: 'pages#volunteer_list'
   
   get 'website/banners', to: 'clubs#website_banners'
+
+  delete "delete_admin", to: "admins#delete_admin"
   
   resources :pages do
     member do
