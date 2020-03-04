@@ -130,7 +130,7 @@ GEM
       mimemagic (= 0.3.0)
     pg (0.18.4)
     popper_js (1.14.5)
-    puma (3.12.0)
+    puma (3.12.4)
     rack (2.0.6)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -226,7 +226,7 @@ DEPENDENCIES
   meta-tags
   paperclip (= 4.3.6)
   pg (= 0.18.4)
-  puma (~> 3.0)
+  puma (~> 3.12)
   rails (~> 5.0.6)
   social-share-button (= 1.1.0)
   spring
